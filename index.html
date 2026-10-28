@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경남 가정폭력 112 통계와 마산중부 적용</title>
+<style>
+  :root{
+    --ink:#142033;--muted:#5a6a7e;--blue:#1769aa;--blue2:#2a8fd0;--teal:#15998b;--orange:#ec8b3d;
+    --line:#dde6ef;--paper:#eef3f9;--white:#fff;--soft:#f3f8fc;--amber:#fff4da;--amber-line:#e0a23a;
+    --shadow:0 10px 30px rgba(20,50,80,.08);--shadow-hover:0 16px 40px rgba(20,50,80,.14);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--ink:#e6eef7;--muted:#9bb0c6;--blue:#6bb8f0;--blue2:#4aa3e0;--teal:#44cdbd;--orange:#ffa45c;
+      --line:#26384d;--paper:#0c1623;--white:#132234;--soft:#18304a;--amber:#3a2d12;--amber-line:#d59621;
+      --shadow:0 10px 30px rgba(0,0,0,.35);--shadow-hover:0 16px 40px rgba(0,0,0,.5)}
+    .gridline{stroke:#26384d!important}.axis{fill:#9bb0c6!important}.value{fill:#e6eef7!important}
+    a{color:#7cc4f5!important}
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.7 "Pretendard","Noto Sans KR","Malgun Gothic",system-ui,-apple-system,sans-serif;
+    background-image:radial-gradient(circle at 12% -5%,rgba(42,143,208,.13),transparent 40%),radial-gradient(circle at 95% 8%,rgba(21,153,139,.12),transparent 35%);
+    background-attachment:fixed}
+  main{max-width:1060px;margin:auto;padding:32px 22px 70px}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;padding:46px 40px 40px;border-radius:28px;color:#fff;
+    background:linear-gradient(125deg,#0f3459 0%,#136a8d 55%,#15998b 100%);box-shadow:0 20px 50px rgba(15,52,89,.35)}
+  .hero::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+    background-size:34px 34px;mask-image:linear-gradient(135deg,#000 0%,transparent 70%);-webkit-mask-image:linear-gradient(135deg,#000 0%,transparent 70%)}
+  .hero::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.25),transparent 65%)}
+  .hero>*{position:relative;z-index:1}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(4px)}
+  .eyebrow i{width:8px;height:8px;border-radius:50%;background:#7dffd9;box-shadow:0 0 0 4px rgba(125,255,217,.25)}
+  .hero h1{font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.2;margin:.55em 0 .4em;font-weight:800;letter-spacing:-.02em}
+  .hero h1 span{background:linear-gradient(90deg,#fff,#aef0e4);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{max-width:740px;margin:0;color:#dff3ff;font-size:1.02rem}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chips span{font-size:.82rem;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22)}
+
+  /* WARNING */
+  .warning{display:flex;gap:14px;align-items:flex-start;margin:24px 0;padding:18px 20px;background:var(--amber);
+    border:1px solid var(--amber-line);border-left:6px solid var(--amber-line);border-radius:14px;font-weight:650;box-shadow:var(--shadow)}
+  .warning .ico{flex:none;width:28px;height:28px;border-radius:50%;background:var(--amber-line);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.95rem}
+
+  /* CARDS */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0}
+  .card,section{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--shadow)}
+  .card{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+  .card::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:linear-gradient(90deg,var(--blue),var(--teal))}
+  .card:nth-child(2)::before{background:linear-gradient(90deg,var(--orange),#f5b86b)}
+  .metric{font-size:2.1rem;font-weight:800;color:var(--blue);line-height:1.2;margin:.2em 0;letter-spacing:-.02em}
+  .card:nth-child(2) .metric{color:var(--orange)}
+  .label{color:var(--muted);font-size:.9rem}
+
+  /* SECTIONS */
+  section{margin-top:22px}
+  h2{font-size:1.4rem;margin:0 0 16px;display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+  h2::before{content:"";width:6px;height:1.3em;border-radius:4px;background:linear-gradient(var(--blue),var(--teal))}
+
+  /* CHART */
+  .chart-wrap{overflow-x:auto}
+  svg{display:block;width:100%;min-width:620px;height:auto}
+  .axis{fill:#66778a;font-size:13px}.value{fill:#18324a;font-size:13px;font-weight:700}
+  .gridline{stroke:#dbe4ec;stroke-width:1;stroke-dasharray:4 5}
+  .bar{fill:url(#gBlue);transform-box:fill-box;transform-origin:bottom;animation:grow .9s cubic-bezier(.2,.8,.2,1) both;transition:filter .2s}
+  .bar.last{fill:url(#gOrange)}
+  .bar:hover{filter:brightness(1.12)}
+  .bar:nth-of-type(2){animation-delay:.08s}.bar:nth-of-type(3){animation-delay:.16s}.bar:nth-of-type(4){animation-delay:.24s}.bar:nth-of-type(5){animation-delay:.32s}
+  .trend{fill:none;stroke:var(--teal);stroke-width:2.5;stroke-dasharray:6 6;opacity:.8}
+  .dot{fill:#fff;stroke:var(--teal);stroke-width:3}
+  @keyframes grow{from{transform:scaleY(0);opacity:.2}to{transform:scaleY(1);opacity:1}}
+
+  .growth{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+  .growth div{padding:14px;border-radius:14px;background:var(--soft);text-align:center;border:1px solid var(--line)}
+  .growth b{display:block;color:var(--blue);font-size:1.3rem}
+  .growth div:last-child b{color:var(--orange)}
+  .foot{font-size:.9rem;color:var(--muted);margin:14px 0 0}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;counter-reset:s}
+  .step{position:relative;padding:18px 18px 18px 64px;border:1px solid var(--line);border-radius:16px;background:var(--soft);transition:transform .25s,border-color .25s}
+  .step:hover{transform:translateY(-3px);border-color:var(--teal)}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:36px;height:36px;border-radius:12px;
+    display:grid;place-items:center;color:#fff;font-weight:800;background:linear-gradient(135deg,var(--blue),var(--teal))}
+  .step b{color:var(--teal);font-size:1.02rem}
+
+  /* TABLE */
+  .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:13px 16px}
+  th{background:var(--soft);color:var(--muted);font-size:.88rem;border-bottom:1px solid var(--line)}
+  td{border-bottom:1px solid var(--line)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--soft)}
+  td:first-child{font-weight:650}
+
+  /* LINKS */
+  a{color:#126da4;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+  a:hover{border-bottom-color:currentColor}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+  .links a{padding:9px 16px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-weight:600;font-size:.93rem}
+  .links a:hover{background:var(--blue);color:#fff!important;border-color:var(--blue)}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.bar{animation:none}html{scroll-behavior:auto}}
+
+  @media(max-width:760px){
+    main{padding:16px 13px 44px}.hero{padding:30px 22px;border-radius:22px}
+    .grid,.steps{grid-template-columns:1fr}.growth{grid-template-columns:repeat(2,1fr)}
+  }
+  @media print{
+    body{background:#fff;color:#000}.card,section{box-shadow:none;break-inside:avoid}
+    .hero{background:#123d69!important;print-color-adjust:exact;-webkit-print-color-adjust:exact;box-shadow:none}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <div class="eyebrow"><i></i>Gyeongnam · 112 public statistics · 2021–2025</div>
+    <h1><span>경남 가정폭력 신고 추이<br>마산중부 적용 질문</span></h1>
+    <p>경찰청 공개 시도청별 가정폭력 112 신고 접수 건수를 시각화하고, 마산중부경찰서에서 확인할 수 있는 후속 분석 항목으로 연결했습니다.</p>
+    <div class="chips"><span>📊 경남 전체 기준</span><span>🗓 2021–2025</span><span>🔍 사후 통계 검토용</span></div>
+  </header>
+
+  <div class="warning reveal"><span class="ico">!</span><span>범위 주의: 그래프는 경남 전체 수치입니다. 마산중부경찰서 실적·관할 발생량·고유 사건 수를 나타내지 않습니다.</span></div>
+
+  <div class="grid">
+    <div class="card reveal"><div class="label">경남 · 2025년</div><div class="metric" data-count="16550" data-suffix="건">16,550건</div><div class="label">가정폭력 112 신고 접수</div></div>
+    <div class="card reveal"><div class="label">전년 대비</div><div class="metric" data-count="23.7" data-dec="1" data-prefix="+" data-suffix="%">+23.7%</div><div class="label">2024년보다 3,174건 증가</div></div>
+    <div class="card reveal"><div class="label">2021년 대비</div><div class="metric" data-count="52.5" data-dec="1" data-prefix="+" data-suffix="%">+52.5%</div><div class="label">5년간 5,700건 증가</div></div>
+  </div>
+
+  <section class="reveal">
+    <h2>경남 연도별 접수 건수</h2>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 800 390" role="img" aria-labelledby="chartTitle chartDesc">
+        <title id="chartTitle">경남 가정폭력 112 신고 연간 접수 건수</title>
+        <desc id="chartDesc">2021년 10,850건, 2022년 11,120건, 2023년 12,502건, 2024년 13,376건, 2025년 16,550건.</desc>
+        <defs>
+          <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3aa0dc"/><stop offset="1" stop-color="#1769aa"/></linearGradient>
+          <linearGradient id="gOrange" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb066"/><stop offset="1" stop-color="#e57a28"/></linearGradient>
+        </defs>
+        <line class="gridline" x1="85" y1="320" x2="770" y2="320"/><line class="gridline" x1="85" y1="245" x2="770" y2="245"/><line class="gridline" x1="85" y1="170" x2="770" y2="170"/><line class="gridline" x1="85" y1="95" x2="770" y2="95"/><line class="gridline" x1="85" y1="50" x2="770" y2="50"/>
+        <text class="axis" x="20" y="324">0</text><text class="axis" x="12" y="249">5천</text><text class="axis" x="5" y="174">1만</text><text class="axis" x="5" y="99">1만5천</text><text class="axis" x="5" y="54">1만8천</text>
+        <rect class="bar" x="130" y="157.25" width="76" height="162.75" rx="10"><title>2021년 10,850건</title></rect>
+        <rect class="bar" x="260" y="153.2" width="76" height="166.8" rx="10"><title>2022년 11,120건</title></rect>
+        <rect class="bar" x="390" y="132.47" width="76" height="187.53" rx="10"><title>2023년 12,502건</title></rect>
+        <rect class="bar" x="520" y="119.36" width="76" height="200.64" rx="10"><title>2024년 13,376건</title></rect>
+        <rect class="bar last" x="650" y="71.75" width="76" height="248.25" rx="10"><title>2025년 16,550건 (전년 대비 +23.7%)</title></rect>
+        <polyline class="trend" points="168,157.25 298,153.2 428,132.47 558,119.36 688,71.75"/>
+        <circle class="dot" cx="168" cy="157.25" r="5"/><circle class="dot" cx="298" cy="153.2" r="5"/><circle class="dot" cx="428" cy="132.47" r="5"/><circle class="dot" cx="558" cy="119.36" r="5"/><circle class="dot" cx="688" cy="71.75" r="5"/>
+        <text class="value" x="168" y="138" text-anchor="middle">10,850</text><text class="value" x="298" y="134" text-anchor="middle">11,120</text><text class="value" x="428" y="113" text-anchor="middle">12,502</text><text class="value" x="558" y="100" text-anchor="middle">13,376</text><text class="value" x="688" y="54" text-anchor="middle">16,550</text>
+        <text class="axis" x="168" y="350" text-anchor="middle">2021</text><text class="axis" x="298" y="350" text-anchor="middle">2022</text><text class="axis" x="428" y="350" text-anchor="middle">2023</text><text class="axis" x="558" y="350" text-anchor="middle">2024</text><text class="axis" x="688" y="350" text-anchor="middle">2025</text>
+      </svg>
+    </div>
+    <div class="growth"><div><span class="label">2022 전년 대비</span><b>+2.5%</b></div><div><span class="label">2023 전년 대비</span><b>+12.4%</b></div><div><span class="label">2024 전년 대비</span><b>+7.0%</b></div><div><span class="label">2025 전년 대비</span><b>+23.7%</b></div></div>
+    <p class="foot">단위: 경남 시도청 관할 가정폭력 112 신고 접수 건수. 접수량은 실제 발생량, 중복 없는 사건 수 또는 원인과 같지 않습니다.</p>
+  </section>
+
+  <section class="reveal">
+    <h2>4단계 분석을 마산중부 업무 질문으로 연결</h2>
+    <div class="steps">
+      <div class="step"><b>트리거</b><br>경남 2025년 접수 건수가 전년 대비 23.7% 늘었습니다. 자료 갱신 시점과 코드 기준을 함께 기록합니다.</div>
+      <div class="step"><b>메커니즘</b><br>원인은 공개 연간 통계로 알 수 없습니다. 반복 접수·월별 분포·분류 변경 여부는 검증할 질문으로 둡니다.</div>
+      <div class="step"><b>체인지</b><br>연간 도 단위 추세는 상승했습니다. 계절성·관서별 차이·교제폭력 및 스토킹의 경남 추이는 이 자료로 확인되지 않습니다.</div>
+      <div class="step"><b>임팩트</b><br>승인된 비식별 마산중부 집계가 있다면 같은 기간·분류 정의로 대조해 도 추세와의 유사 여부를 확인할 수 있습니다.</div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <h2>마산중부에 적용할 때 확인할 자료</h2>
+    <div class="tbl"><table><thead><tr><th>확인 항목</th><th>비교 전 기준</th></tr></thead><tbody>
+      <tr><td>연도 또는 월별 접수 건수</td><td>대상 기간과 집계 기준일 일치</td></tr>
+      <tr><td>가정폭력 신고 분류</td><td>경남 공개 통계와 코드 정의 대조</td></tr>
+      <tr><td>반복·중복 접수 집계</td><td>고유 사건 수와 신고 접수 수를 구분</td></tr>
+      <tr><td>관서 단위 결과</td><td>권한 있는 내부 자료 및 비식별 절차 적용</td></tr>
+    </tbody></table></div>
+    <p class="foot">이 자료는 사후 통계 검토용입니다. 실시간 접수, 위험성 평가, 대응 코드, 출동 지령의 기준으로 사용하지 않습니다.</p>
+  </section>
+
+  <section class="reveal">
+    <h2>출처 및 연결</h2>
+    <div class="links">
+      <a href="https://www.data.go.kr/data/15127582/fileData.do">경찰청 시도청별 가정폭력 신고건수 (공공데이터포털)</a>
+      <a href="https://gnpolice.go.kr/msjb/">마산중부경찰서 공식 홈페이지</a>
+    </div>
+    <div class="links">
+      <a href="note-domestic.html">분석 노트 열기</a>
+      <a href="relational-crime.html">관계성범죄 4단계 분석 보기</a>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 스크롤 등장
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+  // 숫자 카운트업
+  if(reduce)return;
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    var end=parseFloat(el.dataset.count),dec=+(el.dataset.dec||0),pre=el.dataset.prefix||'',suf=el.dataset.suffix||'',t0=null,dur=1200;
+    function fmt(v){return pre+v.toLocaleString('ko-KR',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf}
+    function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(end*e);if(p<1)requestAnimationFrame(tick);else el.textContent=fmt(end)}
+    el.textContent=fmt(0);requestAnimationFrame(tick);
+  });
+})();
+</script>
+</body>
+</html>

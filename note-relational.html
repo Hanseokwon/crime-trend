@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관계성범죄 트렌드 4단계 분석 | 분석 노트</title>
+<style>
+:root{--ink:#142033;--muted:#5a6a7e;--blue:#1769aa;--teal:#15998b;--line:#dde6ef;--paper:#eef3f9;--white:#fff;--soft:#f3f8fc;--amber:#fff4da;--amber-line:#e0a23a}
+@media(prefers-color-scheme:dark){:root{--ink:#e6eef7;--muted:#9bb0c6;--blue:#6bb8f0;--teal:#44cdbd;--line:#26384d;--paper:#0c1623;--white:#132234;--soft:#18304a;--amber:#3a2d12}a{color:#7cc4f5!important}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 "Pretendard","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+main{max-width:900px;margin:auto;padding:28px 20px 70px}
+.top{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.top a{padding:8px 15px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-weight:600;font-size:.9rem;text-decoration:none;color:#126da4}
+.top a:hover{background:var(--blue);color:#fff!important;border-color:var(--blue)}
+article{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,5vw,44px);box-shadow:0 10px 30px rgba(20,50,80,.08)}
+h1{font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.3;margin:0 0 6px;letter-spacing:-.02em}
+.meta{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+.meta span{display:inline-block;margin:2px 6px 2px 0;padding:2px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line)}
+h2{font-size:1.3rem;margin:34px 0 10px;padding-left:12px;border-left:6px solid var(--teal)}
+h3{font-size:1.08rem;margin:22px 0 8px;color:var(--blue)}
+p{margin:.6em 0}
+ul,ol{padding-left:22px}li{margin:.35em 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--soft);color:var(--muted);font-size:.88rem;white-space:nowrap}
+td.r,th.r{text-align:right;white-space:nowrap}
+.warn{padding:14px 18px;background:var(--amber);border-left:6px solid var(--amber-line);border-radius:12px}
+a{color:#126da4}
+.foot{margin-top:30px;color:var(--muted);font-size:.85rem}
+</style>
+</head>
+<body>
+<main>
+<nav class="top"><a href="relational-crime.html">← 관계성범죄 4단계 분석 (웹페이지)</a><a href="index.html">경남 통계·마산중부 적용</a><a href="note-domestic.html">경남 통계 노트</a></nav>
+<article>
+<h1>관계성범죄 트렌드 4단계 분석</h1>
+<div class="meta"><span>경찰</span><span>112</span><span>관계성범죄</span><span>가정폭력</span><span>교제폭력</span><span>스토킹</span><span>트렌드분석</span> · 작성 2026-10-28</div>
+
+<h2>개요</h2>
+<p>치안 트렌드 분석의 <code>트리거 → 메커니즘 → 체인지 → 임팩트</code> 프레임을 가정폭력·교제폭력·스토킹 등 관계성 범죄의 <b>사후 분석과 보고</b>에 적용한 노트입니다.</p>
+<p class="warn"><b>업무 경계:</b> 이 프레임은 실시간 신고 접수, 위험성 평가, 대응 코드 부여, 출동 지령을 위한 기준이 아닙니다. 실제 사건은 현행 법령·공식 시스템·관서 절차와 지휘에 따릅니다. 여기서는 공개 통계 및 승인된 비식별 집계만 다룹니다.</p>
+<p>시각 자료: <a href="relational-crime.html">관계성범죄 트렌드 4단계 분석 (웹페이지)</a></p>
+<p>경남 시도청 단위 가정폭력 자료를 마산중부 업무에 적용한 후속 노트: <a href="note-domestic.html">경남 가정폭력 112 통계와 마산중부 적용</a> 및 <a href="index.html">웹페이지</a>.</p>
+
+<h2>핵심 내용</h2>
+<h3>분석 범위</h3>
+<ul>
+<li>경찰청 112 통계의 <b>가정폭력·교제폭력·스토킹 접수 건수</b>를 별도 지표로 살펴봅니다.</li>
+<li>법적 분류가 다른 유형을 하나의 사건으로 합치지 않습니다. 동일 사건의 복수 유형 신고 가능성도 있으므로, 항목을 더해 고유 피해자·사건 수로 표현하지 않습니다.</li>
+<li>112 접수 건수는 신고된 수요입니다. 실제 발생 규모, 중복 없는 사건 수, 위험도 또는 대응 성과와 동일하지 않습니다.</li>
+</ul>
+
+<h3>4단계 적용</h3>
+<div class="tbl"><table>
+<thead><tr><th>단계</th><th>분석 질문</th><th>관계성 범죄 적용</th><th>산출물</th></tr></thead>
+<tbody>
+<tr><td>① 트리거</td><td>어떤 신호가 새로 확인됐나?</td><td>공식 통계·정책·법령 변화와 자료의 기준 시점 확인</td><td>출처가 있는 신호 목록</td></tr>
+<tr><td>② 메커니즘</td><td>어떤 관계·행동 맥락을 살펴볼 필요가 있나?</td><td>반복 연락·통제·디지털 매개·관계 종료 전후 등을 <b>분석 가설</b>로 정리</td><td>가설 및 확인할 자료</td></tr>
+<tr><td>③ 체인지</td><td>접수 통계에서 무엇이 달라졌나?</td><td>유형별 건수·비중·기간을 따로 비교하고 기준과 분모 확인</td><td>통계 표·추이 시각화</td></tr>
+<tr><td>④ 임팩트</td><td>분석 결과가 어떤 후속 검토를 돕나?</td><td>자료 정의 개선, 집계 공백 확인, 예방·지원 협업 검토사항 제시</td><td>1쪽 보고·후속 확인 목록</td></tr>
+</tbody>
+</table></div>
+
+<h3>확인된 112 접수 통계 — 경찰청 연간표</h3>
+<table>
+<thead><tr><th>구분</th><th class="r">2024</th><th class="r">2025</th><th class="r">전년 대비 변화</th></tr></thead>
+<tbody>
+<tr><td>가정폭력</td><td class="r">236,647건</td><td class="r">289,428건</td><td class="r">+22.3%</td></tr>
+<tr><td>교제폭력</td><td class="r">88,394건</td><td class="r">105,344건</td><td class="r">+19.2%</td></tr>
+<tr><td>스토킹</td><td class="r">31,947건</td><td class="r">44,684건</td><td class="r">+39.9%</td></tr>
+</tbody>
+</table>
+<p><b>읽는 법:</b> 경찰청의 「112 전체 신고 건수 현황」에 실린 연간 접수 건수이며, 발생률·고유 사건 수·중증도·원인을 뜻하지 않습니다. 증가 원인은 이 표만으로 판단할 수 없습니다.</p>
+
+<h3>자료 검증에서 발견한 차이</h3>
+<p>경찰청 페이지의 별도 「관계성 범죄 신고자 성별 분류 현황」 표는 2025년 합계를 가정폭력 289,368건, 교제폭력 105,327건, 스토킹 44,687건으로 표시합니다. 위 전체 신고 표와 각각 <b>60건, 17건, 3건 차이</b>가 납니다. 현재 공개 페이지에서 차이의 원인은 확인되지 않았으므로 표를 섞어 계산하지 않고, 원자료·집계 기준을 확인할 항목으로 남깁니다.</p>
+
+<h3>메커니즘 관련 공개 근거</h3>
+<p>성평등가족부의 2025년 가정폭력 실태조사는 전국 만 19세 이상 9,077명을 대상으로 했고, 디지털 강압적 통제와 기술매개형 스토킹 문항을 신설·확대했습니다. 이별 전후의 폭력 경험과 스토킹, 유형 중첩도 조사했습니다. 이는 <b>전국 실태조사의 결과</b>이며 경찰 112 접수 변화와 직접 비교할 수 없습니다.</p>
+<p>이 자료는 반복 접수, 기술매개 행위, 관계 종료 전후 등 어떤 맥락을 집계 자료에서 살펴볼지 생각하게 하는 배경 근거입니다. 개인별 위험을 추정하는 점수나 실시간 대응 규칙으로 변환하지 않습니다.</p>
+
+<h2>인사이트</h2>
+<ul>
+<li>세 유형 모두 2025년 112 접수 건수가 2024년보다 많지만, 통계만으로 실제 발생 증가 또는 한 원인을 확정할 수 없습니다.</li>
+<li>유형별 합계 차이와 중복 가능성은 관계성 범죄 분석에서 정의·분모·집계 단위가 결론을 좌우한다는 점을 보여줍니다.</li>
+<li>가장 안전하고 실용적인 업무 적용은 개별 신고의 AI 분석이 아니라, 공식 통계와 승인된 비식별 집계의 변화를 검토해 자료 공백과 절차 개선 질문을 만드는 것입니다.</li>
+</ul>
+
+<h2>실행할 일</h2>
+<ul>
+<li>원자료의 두 표 간 2025 합계 차이와 집계 기준을 경찰청 원본 파일 또는 담당 부서 자료에서 확인</li>
+<li>관서 단위 검토가 필요하면 권한·승인된 비식별 집계만 사용하고 기간·분모·유형 정의를 먼저 고정</li>
+<li>신고 건수와 실제 발생·중복 없는 사건·위험도·대응 성과를 구분해 보고</li>
+</ul>
+
+<h2>출처</h2>
+<ul>
+<li>경찰청, <a href="https://www.police.go.kr/www/open/publice/publice0203.jsp">경찰통계자료 — 112 전체 신고 건수 및 관계성 범죄 신고자 성별 분류 현황</a>. 2024~2025 연간표. 두 표의 합계 차이는 본문에 기록.</li>
+<li>성평등가족부, <a href="https://www.mogef.go.kr/nw/enw/nw_enw_s001d.do?bbtSn=714094&amp;mid=mda700">2025년 가정폭력 실태조사 결과</a>, 2026-07-30. 전국 성인 9,077명 조사.</li>
+<li>성평등가족부, <a href="https://www.mogef.go.kr/nw/rpd/nw_rpd_s001d.do?bbtSn=710778&amp;mid=news405">2025년 여성폭력통계 발표</a>, 2025-12-30. 범죄자·피해자 관계 세분화 통계 등.</li>
+<li>국가법령정보센터, <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289995">스토킹범죄의 처벌 등에 관한 법률</a>, 2026-10-02 시행본. 세부 업무 적용 전 최신 법령·내부 절차 확인.</li>
+<li>국가법령정보센터, <a href="https://www.law.go.kr/LSW/lsSc.do?eventGubun=060101&amp;menuId=1&amp;query=%EA%B0%80%EC%A0%95%ED%8F%AD%EB%A0%A5+%EB%B2%94%EC%A3%84%EC%9D%98+%EC%B2%98%EB%B2%8C+%EB%93%B1%EC%97%90+%EA%B4%80%ED%95%9C+%ED%8A%B9%EB%A1%80%EB%B2%95&amp;section=&amp;subMenuId=15&amp;tabMenuId=81">가정폭력범죄의 처벌 등에 관한 특례법</a>, 2026-10-02 시행본.</li>
+</ul>
+<p class="foot">개인 학습·사후 분석 보조자료 · 공식 대응 지침 아님</p>
+</article>
+</main>
+</body>
+</html>

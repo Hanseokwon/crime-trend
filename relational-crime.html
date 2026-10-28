@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="가정폭력·교제폭력·스토킹 공개 통계를 트리거, 메커니즘, 체인지, 임팩트 4단계로 검토하는 업무 참고자료">
+  <title>관계성범죄 | 트렌드 4단계 분석</title>
+  <style>
+    :root{color-scheme:light;--ink:#182b3b;--muted:#5b6e7d;--line:#dbe4ea;--paper:#f3f7f9;--white:#fff;--navy:#173b57;--blue:#2b668b;--teal:#18756d;--amber:#986018;--shadow:0 16px 42px rgba(22,52,75,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Pretendard","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;line-height:1.65}.page{width:min(1080px,calc(100% - 36px));margin:32px auto 58px}
+    .hero{position:relative;overflow:hidden;padding:clamp(30px,6vw,58px);border-radius:26px;color:#fff;background:linear-gradient(125deg,#173b57,#255e79 62%,#287970);box-shadow:var(--shadow)}.hero:after{content:"CARE";position:absolute;right:10px;bottom:-70px;color:rgba(255,255,255,.06);font-size:clamp(90px,18vw,190px);font-weight:900;letter-spacing:-.08em;pointer-events:none}.eyebrow{margin:0 0 12px;color:#c6e4e5;font-size:12px;font-weight:850;letter-spacing:.13em}h1{max-width:770px;margin:0;font-size:clamp(32px,5.4vw,56px);line-height:1.13;letter-spacing:-.05em}.hero p{max-width:720px;margin:17px 0 0;color:#e4f0f4;font-size:clamp(15px,2vw,18px)}.badge{display:inline-flex;margin-top:21px;padding:7px 12px;border:1px solid rgba(255,255,255,.28);border-radius:999px;color:#f2f8f8;font-size:12px;font-weight:750}
+    .alert{display:grid;grid-template-columns:30px 1fr;gap:12px;margin:19px 0 34px;padding:17px 19px;border:1px solid #ecd8a9;border-radius:15px;background:#fff7e7}.alert strong{display:block;color:#704a15}.alert p{margin:4px 0 0;color:#6d5b3d;font-size:14px}
+    section{margin-top:40px}.head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:15px}h2{margin:0;color:var(--navy);font-size:clamp(21px,3vw,28px);letter-spacing:-.035em}.head p{margin:0;color:var(--muted);font-size:13px}
+    .stages{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stage{padding:20px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 6px 20px rgba(22,52,75,.035)}.num{display:inline-grid;width:30px;height:30px;place-items:center;border-radius:10px;color:white;background:var(--blue);font-weight:850}.stage:nth-child(2) .num{background:#69854c}.stage:nth-child(3) .num{background:var(--teal)}.stage:nth-child(4) .num{background:#9a6a34}.stage h3{margin:9px 0 3px;font-size:19px}.q{margin:0 0 10px;color:var(--blue);font-size:14px;font-weight:800}.stage p:last-child{margin:0;color:var(--muted);font-size:13px}
+    .stat-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}.stat-card,.note-card{padding:22px;border:1px solid var(--line);border-radius:17px;background:#fff}.stat-card h3,.note-card h3{margin:0 0 5px;font-size:17px}.sub{margin:0 0 13px;color:var(--muted);font-size:12px}.chart{display:block;width:100%;height:auto;margin:8px 0 12px}.chart-label{margin:0;color:#506777;font-size:12px;font-weight:800}.chart-grid{stroke:#dce6ec;stroke-width:1}.chart-axis{stroke:#8298a7;stroke-width:1.2}.chart-tick{fill:#607486;font-size:12px;font-family:inherit}.chart-type{fill:#243d50;font-size:15px;font-weight:750;font-family:inherit}.chart-value{fill:#176e64;font-size:15px;font-weight:850;font-family:inherit}.stat{display:grid;grid-template-columns:1.05fr .6fr .6fr .8fr;gap:9px;align-items:center;padding:10px 0;border-top:1px solid #edf1f4;font-size:13px}.stat.header{border:0;color:#607486;font-size:11px;font-weight:850}.type{font-weight:800}.rise{color:#176e64;font-weight:850}.callout-mini{margin-top:11px;padding:12px 13px;border-radius:12px;background:#edf5f7;color:#506777;font-size:12px}.note-card{background:#fff9eb;border-color:#ecdcb8}.note-card h3{color:#76521d}.note-card p{margin:9px 0 0;color:#655a46;font-size:13px}.diff{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}.diff span{padding:9px 8px;border:1px solid #ead9b4;border-radius:10px;background:#fff;font-size:12px;text-align:center}.diff b{display:block;color:#986018;font-size:16px}
+    .context{display:grid;grid-template-columns:1fr 1fr;gap:13px}.context article{padding:19px;border-radius:15px;background:#eaf3f7}.context article:nth-child(2){background:#edf5e9}.context h3{margin:0 0 6px;font-size:16px}.context p{margin:0;color:#516777;font-size:13px}.use{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.use article{padding:19px;border:1px solid var(--line);border-radius:15px;background:#fff}.use b{display:block;margin-bottom:6px;color:var(--teal);font-size:13px}.use p{margin:0;color:#566c7c;font-size:13px}
+    .limits{padding:21px 23px;border-left:4px solid #b27b2d;border-radius:0 14px 14px 0;background:#fff8e9}.limits h3{margin:0 0 8px;color:#76521d;font-size:16px}.limits ul{margin:0;padding-left:19px;color:#615847;font-size:13px}.limits li+li{margin-top:6px}
+    .sources{display:flex;flex-wrap:wrap;gap:8px}.sources a{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#285c78;font-size:12px;font-weight:750;text-decoration:none}.sources a:hover{border-color:#88b5c6;background:#f4fbfd}footer{display:flex;justify-content:space-between;gap:14px;margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+    @media(max-width:850px){.stages{grid-template-columns:repeat(2,1fr)}.stat-wrap{grid-template-columns:1fr}}@media(max-width:600px){.page{width:calc(100% - 22px);margin:12px auto 40px}.stages,.context,.use{grid-template-columns:1fr}.head{display:block}.head p{margin-top:5px}.stat{grid-template-columns:1fr .55fr .55fr .8fr;font-size:12px}.diff{grid-template-columns:1fr}footer{display:block}footer span{display:block;margin-top:4px}}@media print{body{background:white}.page{width:100%;margin:0}.hero,.stat-card,.note-card{box-shadow:none;break-inside:avoid}section{break-inside:avoid}a{color:inherit!important;text-decoration:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">RELATIONSHIP-BASED VIOLENCE · FOUR-STAGE REVIEW</p>
+      <h1>관계성범죄 신호를<br>근거 있는 검토로</h1>
+      <p>가정폭력·교제폭력·스토킹 통계를 트리거, 메커니즘, 체인지, 임팩트의 순서로 살펴봅니다. 개별 신고의 실시간 판단이 아닌 사후 분석과 보고를 위한 자료입니다.</p>
+      <span class="badge">공개자료 기반 · 112 대응 절차 대체 불가</span>
+    </header>
+    <aside class="alert"><div aria-hidden="true">⚠️</div><div><strong>개인별 위험도나 대응 코드를 이 분석으로 정하지 않습니다.</strong><p>현장 접수·위험성 평가·출동은 현행 법령, 공식 시스템, 관서 매뉴얼 및 지휘를 따릅니다. 이 페이지는 공개 통계와 승인된 비식별 자료의 사후 검토용입니다.</p></div></aside>
+
+    <section><div class="head"><h2>4단계 분석 흐름</h2><p>사실·가설·조치를 분리합니다.</p></div>
+      <div class="stages">
+        <article class="stage"><span class="num">1</span><h3>트리거</h3><p class="q">무슨 신호가 확인됐나?</p><p>공식 통계, 정책·법령 변화, 공개자료의 날짜와 범위를 적습니다.</p></article>
+        <article class="stage"><span class="num">2</span><h3>메커니즘</h3><p class="q">어떤 맥락을 살펴볼까?</p><p>반복 연락, 통제, 기술매개 행위, 관계 종료 전후는 검증할 분석 질문으로 둡니다.</p></article>
+        <article class="stage"><span class="num">3</span><h3>체인지</h3><p class="q">접수 통계에서 무엇이 변했나?</p><p>유형별 건수·기간·분모·집계 기준을 맞추고 서로 다른 표를 섞지 않습니다.</p></article>
+        <article class="stage"><span class="num">4</span><h3>임팩트</h3><p class="q">어떤 후속 검토를 돕나?</p><p>자료 정의, 집계 공백, 예방·지원 협업 검토를 제안하고 한계를 함께 씁니다.</p></article>
+      </div>
+    </section>
+
+    <section><div class="head"><h2>112 신고 접수 추이</h2><p>경찰청 연간표 · 2024년과 2025년 비교</p></div>
+      <div class="stat-wrap">
+        <article class="stat-card"><h3>유형별 접수 건수와 변화율</h3><p class="sub">가로 막대는 2024→2025 변화율입니다. 세 유형을 0~45%의 같은 축에서 비교합니다.</p>
+          <svg class="chart" viewBox="0 0 800 310" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">관계성 범죄 유형별 112 신고 접수 증가율, 2024년에서 2025년</title>
+            <desc id="chart-desc">가정폭력 22.3퍼센트 증가, 교제폭력 19.2퍼센트 증가, 스토킹 39.9퍼센트 증가. 가로축은 0부터 45퍼센트까지입니다.</desc>
+            <defs><linearGradient id="bar-gradient" x1="0" x2="1"><stop offset="0%" stop-color="#6da3bc"/><stop offset="100%" stop-color="#19766e"/></linearGradient></defs>
+            <line class="chart-grid" x1="200" y1="64" x2="200" y2="267"/><line class="chart-grid" x1="306.7" y1="64" x2="306.7" y2="267"/><line class="chart-grid" x1="413.3" y1="64" x2="413.3" y2="267"/><line class="chart-grid" x1="520" y1="64" x2="520" y2="267"/><line class="chart-grid" x1="626.7" y1="64" x2="626.7" y2="267"/><line class="chart-grid" x1="680" y1="64" x2="680" y2="267"/>
+            <line class="chart-axis" x1="200" y1="267" x2="680" y2="267"/>
+            <text class="chart-tick" x="200" y="290" text-anchor="middle">0%</text><text class="chart-tick" x="306.7" y="290" text-anchor="middle">10%</text><text class="chart-tick" x="413.3" y="290" text-anchor="middle">20%</text><text class="chart-tick" x="520" y="290" text-anchor="middle">30%</text><text class="chart-tick" x="626.7" y="290" text-anchor="middle">40%</text><text class="chart-tick" x="680" y="290" text-anchor="middle">45%</text>
+            <text class="chart-type" x="16" y="107">가정폭력</text><rect x="200" y="87" width="238" height="27" rx="8" fill="url(#bar-gradient)"/><text class="chart-value" x="449" y="106">+22.3%</text>
+            <text class="chart-type" x="16" y="175">교제폭력</text><rect x="200" y="155" width="205" height="27" rx="8" fill="url(#bar-gradient)"/><text class="chart-value" x="416" y="174">+19.2%</text>
+            <text class="chart-type" x="16" y="243">스토킹</text><rect x="200" y="223" width="426" height="27" rx="8" fill="url(#bar-gradient)"/><text class="chart-value" x="637" y="242">+39.9%</text>
+          </svg>
+          <p class="chart-label">전년 대비 접수 증가율 (%)</p>
+          <div class="stat header"><span>유형</span><span>2024</span><span>2025</span><span>변화율</span></div>
+          <div class="stat"><span class="type">가정폭력</span><span>236,647</span><span>289,428</span><span class="rise">+22.3%</span></div>
+          <div class="stat"><span class="type">교제폭력</span><span>88,394</span><span>105,344</span><span class="rise">+19.2%</span></div>
+          <div class="stat"><span class="type">스토킹</span><span>31,947</span><span>44,684</span><span class="rise">+39.9%</span></div>
+          <div class="callout-mini">세 유형의 접수 건수는 모두 늘었습니다. 이 표만으로 발생 원인, 고유 사건·피해자 수, 심각도 또는 경찰 대응 성과를 알 수는 없습니다.</div>
+        </article>
+        <aside class="note-card"><h3>원자료 표 간 합계가 다릅니다</h3><p>같은 경찰청 페이지의 별도 「관계성 범죄 신고자 성별 분류 현황」은 2025년 합계를 다르게 제시합니다. 차이의 원인은 공개 페이지에서 확인되지 않았습니다.</p><div class="diff"><span>가정폭력<b>60건 차이</b></span><span>교제폭력<b>17건 차이</b></span><span>스토킹<b>3건 차이</b></span></div><p>따라서 서로 다른 표를 섞어 재계산하지 않고, 원자료와 집계 기준 확인 항목으로 남깁니다.</p></aside>
+      </div>
+    </section>
+
+    <section><div class="head"><h2>메커니즘을 가설로 다루기</h2><p>전국 조사 결과는 112 통계와 다른 자료입니다.</p></div>
+      <div class="context">
+        <article><h3>2025 가정폭력 실태조사</h3><p>성평등가족부는 전국 만 19세 이상 9,077명을 조사했습니다. 디지털 강압적 통제와 기술매개형 스토킹 문항을 신설·확대했고, 관계 종료 전후의 폭력과 스토킹 및 유형 중첩을 다뤘습니다.</p></article>
+        <article><h3>분석 질문으로 연결</h3><p>관계 종료 전후, 반복 접수, 기술매개 행위를 승인된 집계에서 구분해 볼 수 있는가? 자료 정의와 보호 기준은 무엇인가? 이 질문은 개인별 위험 예측 기준이 아닙니다.</p></article>
+      </div>
+    </section>
+
+    <section><div class="head"><h2>업무에 가져갈 분석 원칙</h2><p>현장 대응이 아닌 사후 집계·보고에서 사용합니다.</p></div>
+      <div class="use">
+        <article><b>① 유형을 더해 사건 수로 만들지 않기</b><p>분류가 겹칠 수 있으므로 합계를 고유 사건·피해자 수라고 부르지 않습니다.</p></article>
+        <article><b>② 접수량과 발생을 구분하기</b><p>신고 접수 증가는 발생 증가와 같지 않습니다. 원인은 별도 자료로 검증합니다.</p></article>
+        <article><b>③ 비교 조건을 고정하기</b><p>기간, 분류, 분모, 표 버전이 같은지 확인하고 차이가 있으면 먼저 설명합니다.</p></article>
+      </div>
+    </section>
+
+    <section><div class="limits"><h3>정보 보호와 적용 한계</h3><ul>
+      <li>실제 신고 내용·신고자·피해자 정보·주소·전화번호·녹취·출동일지·내부 화면을 개인 볼트나 외부 AI에 입력하지 않습니다.</li>
+      <li>내부 검토는 승인된 환경에서 비식별 집계로만 진행합니다.</li>
+      <li>AI가 만든 페르소나·가상 데이터는 실태조사나 실제 범죄 추세의 근거가 아닙니다.</li>
+      <li>법적 판단과 현장 조치는 최신 법령·내부 절차·지휘를 우선합니다.</li>
+    </ul></div></section>
+
+    <section><div class="head"><h2>공식 출처와 관련 자료</h2><p>최종 보고 전 원문과 최신 기준을 확인하세요.</p></div>
+      <nav class="sources" aria-label="공식 출처">
+        <a href="https://www.police.go.kr/www/open/publice/publice0203.jsp">경찰청 112 신고 통계</a>
+        <a href="https://www.mogef.go.kr/nw/enw/nw_enw_s001d.do?bbtSn=714094&amp;mid=mda700">2025 가정폭력 실태조사</a>
+        <a href="https://www.mogef.go.kr/nw/rpd/nw_rpd_s001d.do?bbtSn=710778&amp;mid=news405">2025 여성폭력통계</a>
+        <a href="https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=289995">스토킹처벌법 현행본</a>
+        <a href="https://www.law.go.kr/LSW/lsSc.do?eventGubun=060101&amp;menuId=1&amp;query=%EA%B0%80%EC%A0%95%ED%8F%AD%EB%A0%A5+%EB%B2%94%EC%A3%84%EC%9D%98+%EC%B2%98%EB%B2%8C+%EB%93%B1%EC%97%90+%EA%B4%80%ED%95%9C+%ED%8A%B9%EB%A1%80%EB%B2%95&amp;section=&amp;subMenuId=15&amp;tabMenuId=81">가정폭력처벌법 현행본</a>
+        <a href="note-relational.html">분석 노트</a>
+        <a href="index.html">경남 가정폭력 통계 · 마산중부 적용</a>
+      </nav>
+    </section>
+    <footer><span>개인 학습·사후 분석 보조자료 · 공식 대응 지침 아님</span><span>자료 기준일: 2026-10-28</span></footer>
+  </main>
+</body>
+</html>
